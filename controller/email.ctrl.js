@@ -4,7 +4,10 @@ import { asyncHandler } from "../utils/AsyncHandler.js";
 import nodemailer from "nodemailer";
 
 export const sendEmail = asyncHandler(async (req, res) => {
-  const { subject, html, from, to } = req.body;
+
+  const { from, to, subject, html } = req.body;
+
+  if(!subject || !html || !from || !to) throw new ApiError(400, "Unable to Send Email!...");
 
   const transporter = nodemailer.createTransport({
     host: process.env.MAILE_HOSTER,
