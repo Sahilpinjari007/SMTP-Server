@@ -29,7 +29,7 @@ app.use('/api/v1/mail', emailRouter);
 
 
 app.get("/", (req, res)=>{
-  res.send('Bro it is SMTP Server!...')
+  res.redirect(200, "https://skayshare.vercel.app/"); 
 })
 
 
